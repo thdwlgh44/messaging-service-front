@@ -28,6 +28,12 @@ const Signup = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSignup();
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-box">
@@ -37,18 +43,21 @@ const Signup = () => {
           placeholder="사용자 이름"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <input
           type="password"
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <input
           type="password"
           placeholder="비밀번호 확인"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={handleSignup}>회원가입</button>
         <p className="signup-text">

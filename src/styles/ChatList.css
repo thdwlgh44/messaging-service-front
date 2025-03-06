@@ -22,3 +22,32 @@
 .chat-room:hover {
   background: #d0ebff;
 }
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-info button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-info button:hover {
+  background-color: #cc0000;
+}

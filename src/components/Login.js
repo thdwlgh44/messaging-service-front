@@ -24,8 +24,8 @@ const Login = ({ setToken }) => {
 
       if (response.ok) {
         console.log("✅ JWT 토큰 저장:", data.token);
-        localStorage.setItem("token", data.token); // ✅ JWT 저장
-        localStorage.setItem("chatUser", username); // ✅ 사용자명 저장
+        sessionStorage.setItem("token", data.token); // ✅ JWT 저장
+        sessionStorage.setItem("chatUser", username); // ✅ 사용자명 저장
         setToken(data.token); // ✅ 상태 업데이트
         navigate("/chat"); // ✅ 로그인 성공 시 채팅방 목록으로 이동
       } else {
@@ -38,6 +38,12 @@ const Login = ({ setToken }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-box">
@@ -47,12 +53,14 @@ const Login = ({ setToken }) => {
           placeholder="사용자 이름"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <input
           type="password"
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={handleLogin}>로그인</button>
         <p className="signup-text">

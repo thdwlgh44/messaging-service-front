@@ -11,6 +11,12 @@ const MessageInput = ({ onSendMessage }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
+
   return (
     <div className="message-input">
       <input
@@ -18,6 +24,7 @@ const MessageInput = ({ onSendMessage }) => {
         placeholder="메시지를 입력하세요..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleSend}>전송</button>
     </div>
