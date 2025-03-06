@@ -1,0 +1,70 @@
+/* 전체 화면 중앙 정렬 */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* 로그인 박스 */
+.login-box {
+  background: white;
+  padding: 40px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 요소 중앙 정렬 */
+}
+
+/* 제목 */
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* 입력 필드 */
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* 로그인 버튼 */
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #2a5298;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-box button:hover {
+  background: #1e3c72;
+}
+
+/* 회원가입 텍스트 */
+.signup-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-text span {
+  color: #2a5298;
+  cursor: pointer;
+  font-weight: bold;
+}

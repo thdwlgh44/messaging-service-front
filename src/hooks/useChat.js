@@ -11,6 +11,7 @@ const useChat = (roomId, user, recipient) => {
     console.log(`✅ WebSocket Connected to room: ${roomId}`);
 
     const subscription = client.subscribe(
+      //메시지 수신
       `/topic/chatroom-${roomId}`,
       (message) => {
         const parsedMessage = JSON.parse(message.body);
@@ -31,6 +32,7 @@ const useChat = (roomId, user, recipient) => {
       console.log("✅ WebSocket 상태:", client);
       const message = { sender: user, recipient, content, chatRoomId: roomId };
       client.publish({
+        //메시지 전송
         destination: "/app/send",
         body: JSON.stringify(message),
       });
