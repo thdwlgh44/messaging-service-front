@@ -14,13 +14,16 @@ import "./styles/App.css";
 
 function App() {
   // ✅ sessionStorage에서 JWT 토큰과 사용자 이름 확인
-  const [token, setToken] = useState(sessionStorage.getItem("token"));
-  // const username = sessionStorage.getItem("chatUser");
+  const [token, setToken] = useState(() => sessionStorage.getItem("token")); // ✅ 초기값 설정
+  const [isTokenChecked, setIsTokenChecked] = useState(false); // ✅ 중복 실행 방지
 
   // ✅ 로그인 상태 변경 감지 (useEffect 추가)
   useEffect(() => {
-    setToken(sessionStorage.getItem("token"));
-  }, []);
+    if (!isTokenChecked) {
+      setToken(sessionStorage.getItem("token"));
+      setIsTokenChecked(true);
+    }
+  }, [isTokenChecked]); // ✅ 초기 1회 실행 후 다시 실행되지 않도록 설정
 
   return (
     <ChatProvider>
@@ -43,7 +46,6 @@ function App() {
               <div className="chat-container">
                 <Routes>
                   <Route path="/chat/:roomId" element={<ChatRoom />} />
-                  <Route path="/setup" element={<up />} />
                   <Route path="/" element={<Navigate to="/chat" replace />} />
 
                   {/* ✅ 로그인된 경우 로그인 & 회원가입 페이지 접근 방지 */}
